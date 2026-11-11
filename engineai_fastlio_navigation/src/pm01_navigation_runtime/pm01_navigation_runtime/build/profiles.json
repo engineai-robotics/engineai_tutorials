@@ -1,0 +1,15 @@
+{
+  "schema": 2,
+  "profiles": {
+    "desktop": ["pm01_navigation_runtime", "pm01_navigation_client", "pm01_navigation_bringup", "pm01_navigation_console"],
+    "core-client": ["pm01_navigation_runtime", "pm01_navigation_core", "pm01_navigation_nav2", "pm01_navigation_client"],
+    "sim": ["livox_ros_driver2", "fast_lio", "slam_toolbox", "simulator", "rl_walking", "pm01_navigation_runtime", "pm01_navigation_core", "pm01_navigation_nav2", "pm01_navigation_perception", "pm01_navigation_motion", "pm01_navigation_sim", "pm01_navigation_client", "pm01_navigation_bringup", "pm01_navigation_console"],
+    "hardware": ["livox_ros_driver2", "fast_lio", "interface_protocol", "slam_toolbox", "pm01_navigation_runtime", "pm01_navigation_core", "pm01_navigation_nav2", "pm01_navigation_perception", "pm01_navigation_motion", "pm01_navigation_hardware", "pm01_navigation_client", "pm01_navigation_bringup"]
+  },
+  "sources": {
+    "fast_lio": "src/FAST_LIO_ROS2",
+    "slam_toolbox": "src/slam_toolbox",
+    "simulator": "src/engineai_navigation/ros/src/simulation/simulator",
+    "rl_walking": "src/engineai_navigation/ros/src/simulation/rl_walking"
+  }
+}

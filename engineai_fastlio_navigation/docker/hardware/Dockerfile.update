@@ -1,0 +1,23 @@
+# Maintainer incremental release: docker_build.py verifies dependency sources
+# against this already-built runtime before selecting this recipe.
+ARG RUNTIME_BASE
+FROM ${RUNTIME_BASE}
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+WORKDIR /opt/pm01_navigation
+COPY LICENSE THIRD_PARTY.md dependencies.repos ./
+RUN rm -rf src config DEPENDENCIES.md
+COPY src/ src/
+COPY config/ config/
+COPY scripts/ scripts/
+ARG BUILD_JOBS=2
+RUN PM01_BUILD_JOBS=${BUILD_JOBS} bash scripts/build.sh hardware navigation \
+    && rm -rf build log
+COPY docker/ docker/
+COPY docker/hardware/entrypoint.sh /usr/local/bin/pm01-env
+ARG SOURCE_REVISION=unknown
+ARG SOURCE_SHA256=unknown
+LABEL org.opencontainers.image.version="1.0.0" \
+      org.opencontainers.image.revision="${SOURCE_REVISION}" \
+      cn.engineai.pm01.source-sha256="${SOURCE_SHA256}"
+RUN printf '%s\nsource_sha256=%s\n' "${SOURCE_REVISION}" "${SOURCE_SHA256}" > container-revision.txt \
+    && chmod 755 /usr/local/bin/pm01-env

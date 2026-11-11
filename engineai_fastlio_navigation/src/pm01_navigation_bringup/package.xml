@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pm01_navigation_bringup</name>
+  <version>1.0.0</version>
+  <description>Profile-based assembly for PM01 navigation.</description>
+  <maintainer email="info@engineai.com.cn">PM01 maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <!-- This package installs launch/config resources and Python session scripts.
+       Backend nodes are needed at runtime, not to build desktop resources. -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>nav2_common</exec_depend>
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>nav2_controller</exec_depend>
+  <exec_depend>nav2_smoother</exec_depend>
+  <exec_depend>nav2_planner</exec_depend>
+  <exec_depend>nav2_behaviors</exec_depend>
+  <exec_depend>nav2_bt_navigator</exec_depend>
+  <exec_depend>nav2_waypoint_follower</exec_depend>
+  <exec_depend>nav2_velocity_smoother</exec_depend>
+  <exec_depend>nav2_navfn_planner</exec_depend>
+  <exec_depend>nav2_dwb_controller</exec_depend>
+  <exec_depend>nav2_rotation_shim_controller</exec_depend>
+  <exec_depend>nav2_map_server</exec_depend>
+  <exec_depend>nav2_amcl</exec_depend>
+  <exec_depend>slam_toolbox</exec_depend>
+  <exec_depend>nav2_lifecycle_manager</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>pm01_navigation_core</exec_depend>
+  <exec_depend>pm01_navigation_client</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+  <exec_depend>pm01_navigation_runtime</exec_depend>
+  <exec_depend>pm01_navigation_perception</exec_depend>
+  <exec_depend>pm01_navigation_motion</exec_depend>
+  <exec_depend>pm01_navigation_nav2</exec_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

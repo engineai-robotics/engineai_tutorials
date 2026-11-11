@@ -1,0 +1,14 @@
+/**:
+  ros__parameters:
+    common:
+      concurrent_sensor_io: true
+      imu_queue_size: 200
+    mapping:
+      extrinsic_est_en: false
+      initial_rpy: [0.8734710884, -0.0097318925, 1.5707963267948966]
+      initial_xyz: [0.07561223574, 0.011, 0.20237618574]
+    publish:
+      map_en: false
+      dense_publish_en: true
+    pcd_save:
+      pcd_save_en: false

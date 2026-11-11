@@ -1,0 +1,15 @@
+<class_libraries>
+  <library path="pm01_nav_controllers">
+    <class name="pm01_fastlio_nav::LatestTfRotationShimController" type="pm01_fastlio_nav::LatestTfRotationShimController" base_class_type="nav2_core::Controller">
+      <description>Nav2 path alignment using latest common measured TF time.</description>
+    </class>
+    <class name="pm01_fastlio_nav::SettlingDWBController" type="pm01_fastlio_nav::SettlingDWBController" base_class_type="nav2_core::Controller">
+      <description>DWB with zero-command endpoint settling and XY re-entry.</description>
+    </class>
+  </library>
+  <library path="pm01_goal_checkers">
+    <class name="pm01_fastlio_nav::SettledGoalChecker" type="pm01_fastlio_nav::SettledGoalChecker" base_class_type="nav2_core::GoalChecker">
+      <description>Position and heading must hold continuously for 0.4 seconds; require_stopped defaults true.</description>
+    </class>
+  </library>
+</class_libraries>

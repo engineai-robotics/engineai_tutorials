@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "project": "fastlio_navigation",
+  "version": "v1.0.0",
+  "github_manifest": "https://github.com/engineai-robotics/engineai_tutorials/releases/download/pm01-navigation-v1.0.0/release.json",
+  "aliyun": {
+    "image": "acr-engineai-robotics-open-registry.cn-wulanchabu.cr.aliyuncs.com/engineai-robotics-open/pm01-fastlio-navigation:v1.0.0",
+    "manifest_digest": "sha256:e9d60e4b36f4b257c4631fa5bc4d69ea60587d19df8089cb505d6b9ae93583cf",
+    "config_digest": "sha256:3afbb7274cdf984844bff67fcbb4821c5e399a6480e6953cc5eb25bbd9d0a8d2",
+    "architecture": "arm64",
+    "image_fingerprint": "9dc216ab5a4b78e83b089ca07639671bac0d5dfcd203fa0d176d8804b5316ad6",
+    "source_revision": "1933074f04bba6a68eeb5ede5bc9dfcf6f5c8833",
+    "source_sha256": "ac480000e28be65267ff92bf8b9c9e2ff96ef6be14e127bf8f8e93811b9b30a4",
+    "local_image": "pm01-navigation:v1.0.0-arm64"
+  },
+  "github": {
+    "architecture": "arm64",
+    "source_revision": "0ffc30f19e4fbc59f24a5f50985fd6b2cc35afb9",
+    "image_fingerprint": "6267f9d1f25133f63d0131da5ccd1618a5bae4e0449bf1ccbb756c79f0e37c95",
+    "source_sha256": "7603d45fda09f40def1bf9dcf9493ffe78e418691d3c9a0af24adf6f6f9ae703"
+  }
+}

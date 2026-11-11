@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pm01_navigation_console</name><version>1.0.0</version>
+  <description>Configurable native Ubuntu navigation console.</description>
+  <maintainer email="info@engineai.com.cn">PM01 maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>pm01_navigation_client</exec_depend>
+  <exec_depend>pm01_navigation_bringup</exec_depend>
+  <exec_depend>python3-tk</exec_depend><exec_depend>python3-yaml</exec_depend>
+  <exec_depend>openssh-client</exec_depend>
+  <exec_depend>rviz2</exec_depend><exec_depend>nav2_rviz_plugins</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <test_depend>python3-pytest</test_depend>
+  <exec_depend>pm01_navigation_runtime</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

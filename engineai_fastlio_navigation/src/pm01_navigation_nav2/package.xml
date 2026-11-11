@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pm01_navigation_nav2</name><version>1.0.0</version>
+  <description>PM01 Nav2 控制器、到点检查和步行指令评分插件。保留现有插件标识和动态库名称。</description>
+  <maintainer email="info@engineai.com.cn">PM01 maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>dwb_core</depend>
+  <depend>pluginlib</depend>
+  <depend>nav2_controller</depend>
+  <depend>nav2_core</depend>
+  <depend>nav2_rotation_shim_controller</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>behaviortree_cpp_v3</depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

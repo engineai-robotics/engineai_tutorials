@@ -1,0 +1,20 @@
+# 复制到 ~/.config/pm01_navigation/robots/pm01-robot/deployment.yaml 后填写。
+# 一台机器人一份目录；更换机器人时新建目录，不覆盖上一台的配置。
+schema: 1
+robot:
+  ssh_host: pm01-robot                    # 已在 ~/.ssh/config 中设置的别名
+  address: <ROBOT_IP>                     # 开发电脑实际连接到的机器人 IPv4
+  machine_id: '<ROBOT_MACHINE_ID>'        # ssh pm01-robot 'cat /etc/machine-id' 的输出
+  container_tool: ~/pm01_navigation_deploy/pm01_container.py
+  container_config: ~/.config/pm01_navigation/container.json
+
+developer:
+  address: <DEVELOPER_IP>                 # 通往机器人路由中的 src 地址
+
+network:
+  ros_domain_id: 69                       # 本项目与 PM01 运控使用的 ROS 域
+  robot_lan_address: 192.168.0.162         # 机载内部网卡地址，不随公司 Wi-Fi 地址一起改
+  motion_peer: 192.168.0.163               # 运控板内部网络地址
+
+# apply 在本文件旁生成 console.yaml；它供命令行、RViz 和可选控制台共用。
+# 算法、外参和雷达参数仍使用各自 YAML/JSON；不在本文件存放密码或私钥。

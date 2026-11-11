@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.8)
+project(pm01_navigation_bringup)
+find_package(ament_cmake REQUIRED)
+set(PM01_CONFIG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../config" CACHE PATH "Workspace navigation configuration")
+foreach(required hardware sim matching automatic_ground.yaml pm01_lidar_tf.yaml)
+  if(NOT EXISTS "${PM01_CONFIG_ROOT}/${required}")
+    message(FATAL_ERROR "Missing config/${required}; sync the complete project config directory before building")
+  endif()
+endforeach()
+install(DIRECTORY launch worlds DESTINATION share/${PROJECT_NAME}
+  PATTERN "__pycache__" EXCLUDE PATTERN "*.pyc" EXCLUDE PATTERN ".DS_Store" EXCLUDE)
+install(DIRECTORY "${PM01_CONFIG_ROOT}/hardware" "${PM01_CONFIG_ROOT}/sim" "${PM01_CONFIG_ROOT}/matching"
+  DESTINATION share/${PROJECT_NAME}/config)
+install(FILES "${PM01_CONFIG_ROOT}/automatic_ground.yaml" "${PM01_CONFIG_ROOT}/pm01_lidar_tf.yaml"
+  DESTINATION share/${PROJECT_NAME}/config)
+install(PROGRAMS scripts/session.py DESTINATION lib/${PROJECT_NAME} RENAME pm01_session)
+if(BUILD_TESTING)
+  find_package(ament_cmake_pytest REQUIRED)
+  ament_add_pytest_test(profiles test/test_profiles.py)
+  ament_add_pytest_test(rendering test/test_rendering.py)
+endif()
+ament_package()

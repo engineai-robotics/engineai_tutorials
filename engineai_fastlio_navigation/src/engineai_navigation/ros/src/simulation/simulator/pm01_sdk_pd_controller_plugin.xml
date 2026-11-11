@@ -1,0 +1,10 @@
+<library path="pm01_sdk_pd_controller">
+  <class
+    name="simulator/Pm01SdkPdController"
+    type="simulator::Pm01SdkPdController"
+    base_class_type="controller_interface::ControllerInterface">
+    <description>
+      PM01 effort controller implementing the native SDK position PD law.
+    </description>
+  </class>
+</library>

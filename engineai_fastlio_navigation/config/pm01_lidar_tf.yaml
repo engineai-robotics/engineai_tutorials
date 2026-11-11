@@ -1,0 +1,19 @@
+# base_link is LINK_TORSO_YAW from the PM01 navigation URDF.
+# Source: engineai_navigation ros/src/simulation/simulator/config/robot/pm01_lidar_v1/pm01_lidar_v1.urdf.xacro
+base_frame: base_link
+lidar_frame: livox_frame
+lidar_xyz: [0.12438064, 0.0, 0.21289480]
+lidar_rpy: [0.872664626, 0.0, 1.570796327]
+
+# IMU origin expressed in livox_frame. Rotation is identity.
+# FAST-LIO mid360.yaml extrinsic_T is the opposite translation and must stay unchanged.
+imu_frame: livox_imu
+imu_xyz: [0.011, 0.02329, -0.04412]
+imu_rpy: [0.0, 0.0, 0.0]
+
+# Nav2 Twist is already m/s and rad/s. These are clamps, not scale factors.
+max_vel_x: 0.7
+max_vel_y: 0.4
+max_yaw: 0.7
+cmd_timeout_sec: 0.2
+body_vel_hz: 50.0

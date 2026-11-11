@@ -1,0 +1,15 @@
+automatic_ground:
+  ros__parameters:
+    reference_frame: odom
+    base_frame: base_footprint
+    input_topic: /pm01/deskewed_points
+    output_topic: /pm01/ground_plane_status
+    frequency: 5.0
+    max_data_age: 0.75
+    # Physical sensor-to-floor distance range; no remembered map Z value.
+    min_sensor_height: 0.7
+    max_sensor_height: 1.5
+    calibration_samples: 3
+    calibration_span: 0.4
+    max_ground_height_rate: 0.02
+    max_anchor_offset: 0.08

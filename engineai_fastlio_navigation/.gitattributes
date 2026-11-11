@@ -1,0 +1,5 @@
+# Upstream development-agent instructions are not a public runtime dependency.
+**/AGENTS.md export-ignore
+
+# Retain the vendored Livox sources' upstream CRLF line endings.
+src/livox_ros_driver2/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

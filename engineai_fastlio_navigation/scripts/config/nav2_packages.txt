@@ -1,0 +1,17 @@
+ros-humble-navigation2
+ros-humble-nav2-bringup
+ros-humble-nav2-common
+ros-humble-nav2-controller
+ros-humble-nav2-smoother
+ros-humble-nav2-planner
+ros-humble-nav2-behaviors
+ros-humble-nav2-bt-navigator
+ros-humble-nav2-waypoint-follower
+ros-humble-nav2-velocity-smoother
+ros-humble-nav2-lifecycle-manager
+ros-humble-nav2-map-server
+ros-humble-nav2-amcl
+ros-humble-slam-toolbox
+ros-humble-nav2-navfn-planner
+ros-humble-nav2-dwb-controller
+ros-humble-nav2-rotation-shim-controller

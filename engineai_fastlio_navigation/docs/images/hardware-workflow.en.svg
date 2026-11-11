@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1304" viewBox="0 0 960 1304" role="img" aria-labelledby="title desc">
+<title id="title">PM01 hardware navigation modes</title>
+<desc id="desc">Complete setup and load the environment, then choose fresh navigation, controller-driven mapping, or saved-map localization and navigation. Save if needed, release motion output, verify its status, and stop the session.</desc>
+<rect width="960" height="1304" fill="#ffffff" />
+<text x="480" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28.0" font-weight="600" fill="#24344a">Hardware workflow</text>
+<text x="480" y="68" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18.0" font-weight="400" fill="#64748b">Complete setup, then choose one workflow</text>
+<rect x="245" y="92" width="470" height="72" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="121.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20.0" font-weight="600" fill="#24344a">Setup: build tools and load image</text>
+<text x="480.0" y="149.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17.0" font-weight="400" fill="#24344a">bash scripts/setup_hardware.sh</text>
+<polyline points="480,164 480,188" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,180 485,180 480,188" fill="#94a3b8" />
+<rect x="245" y="188" width="470" height="72" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="217.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20.0" font-weight="600" fill="#24344a">Load the selected robot environment</text>
+<text x="480.0" y="245.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16.0" font-weight="400" fill="#24344a">source ~/.config/pm01_navigation/active.env</text>
+<polyline points="480,260 480,283" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,275 485,275 480,283" fill="#94a3b8" />
+<polygon points="480,283 650,328 480,373 310,328" fill="#edf3fb" stroke="#a8bdd8" stroke-width="1.5" />
+<text x="480" y="324" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="#24344a">Stand steadily and still</text>
+<text x="480" y="349" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17.0" font-weight="400" fill="#52677f">Choose one mode</text>
+<rect x="30" y="412" width="280" height="424" rx="18" fill="#f2f7ff" stroke="#f2f7ff" stroke-width="1.5" />
+<rect x="340" y="412" width="280" height="424" rx="18" fill="#eff9f5" stroke="#eff9f5" stroke-width="1.5" />
+<rect x="650" y="412" width="280" height="424" rx="18" fill="#f8f4ff" stroke="#f8f4ff" stroke-width="1.5" />
+<polyline points="310,328 170,328 170,430" fill="none" stroke="#628bc3" stroke-width="2" stroke-linejoin="round" />
+<polygon points="165,422 175,422 170,430" fill="#628bc3" />
+<polyline points="480,373 480,430" fill="none" stroke="#479a7d" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,422 485,422 480,430" fill="#479a7d" />
+<polyline points="650,328 790,328 790,430" fill="none" stroke="#9874bd" stroke-width="2" stroke-linejoin="round" />
+<polygon points="785,422 795,422 790,430" fill="#9874bd" />
+<rect x="46" y="430" width="248" height="76" rx="14" fill="#e2edfc" stroke="#8eadd6" stroke-width="1.5" />
+<text x="170.0" y="461.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#35659e">fresh · New-map navigation</text>
+<text x="170.0" y="489.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15.0" font-weight="400" fill="#35659e">session start --mode fresh</text>
+<rect x="356" y="430" width="248" height="76" rx="14" fill="#ddf2e9" stroke="#88bdaa" stroke-width="1.5" />
+<text x="480.0" y="461.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#237c60">mapping · Mapping only</text>
+<text x="480.0" y="489.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15.0" font-weight="400" fill="#237c60">session start --mode mapping</text>
+<rect x="666" y="430" width="248" height="76" rx="14" fill="#eee4fa" stroke="#b69bcf" stroke-width="1.5" />
+<text x="790.0" y="461.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#775298">saved · Saved-map navigation</text>
+<text x="790.0" y="489.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15.0" font-weight="400" fill="#775298">--mode saved --map …</text>
+<polyline points="170,506 170,532" fill="none" stroke="#8eadd6" stroke-width="2" stroke-linejoin="round" />
+<polygon points="165,524 175,524 170,532" fill="#8eadd6" />
+<polyline points="480,506 480,532" fill="none" stroke="#88bdaa" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,524 485,524 480,532" fill="#88bdaa" />
+<polyline points="790,506 790,532" fill="none" stroke="#b69bcf" stroke-width="2" stroke-linejoin="round" />
+<polygon points="785,524 795,524 790,532" fill="#b69bcf" />
+<rect x="46" y="532" width="248" height="100" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="170.0" y="561.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#24344a">Open RViz</text>
+<text x="170.0" y="589.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Check the new map and pose</text>
+<text x="170.0" y="617.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Origin: this starting position</text>
+<rect x="356" y="532" width="248" height="100" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="561.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#24344a">Open RViz</text>
+<text x="480.0" y="589.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Check that the map updates</text>
+<text x="480.0" y="617.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Use the physical controller</text>
+<rect x="666" y="532" width="248" height="100" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="790.0" y="561.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#24344a">Open the saved map in RViz</text>
+<text x="790.0" y="589.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">2D Pose Estimate</text>
+<text x="790.0" y="617.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Set actual position and heading</text>
+<polyline points="170,632 170,658" fill="none" stroke="#8eadd6" stroke-width="2" stroke-linejoin="round" />
+<polygon points="165,650 175,650 170,658" fill="#8eadd6" />
+<polyline points="480,632 480,658" fill="none" stroke="#88bdaa" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,650 485,650 480,658" fill="#88bdaa" />
+<polyline points="790,632 790,658" fill="none" stroke="#b69bcf" stroke-width="2" stroke-linejoin="round" />
+<polygon points="785,650 795,650 790,658" fill="#b69bcf" />
+<rect x="46" y="658" width="248" height="150" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="170.0" y="698.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#24344a">Enable output: enable-motion</text>
+<text x="170.0" y="726.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Send a Nav2 Goal / CLI goal</text>
+<text x="170.0" y="754.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Send the next goal after arrival</text>
+<text x="170.0" y="782.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Interrupt with cancel</text>
+<rect x="356" y="658" width="248" height="150" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="698.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#24344a">Drive with the controller</text>
+<text x="480.0" y="726.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Map the required area</text>
+<text x="480.0" y="754.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">No automatic navigation</text>
+<text x="480.0" y="782.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Project motion output stays off</text>
+<rect x="666" y="658" width="248" height="150" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="790.0" y="698.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#24344a">Confirm position and heading</text>
+<text x="790.0" y="726.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Enable output: enable-motion</text>
+<text x="790.0" y="754.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Send a Nav2 Goal / CLI goal</text>
+<text x="790.0" y="782.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#24344a">Interrupt with cancel</text>
+<polyline points="170,808 170,862 480,862 480,893" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,885 485,885 480,893" fill="#94a3b8" />
+<polyline points="480,808 480,893" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,885 485,885 480,893" fill="#94a3b8" />
+<polyline points="790,808 790,862 480,862 480,893" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,885 485,885 480,893" fill="#94a3b8" />
+<rect x="245" y="893" width="470" height="84" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="928.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21.0" font-weight="600" fill="#24344a">Save if needed: save-map</text>
+<text x="480.0" y="956.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#24344a">Save before stopping; record the map.yaml path on the robot</text>
+<polyline points="480,977 480,1003" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,995 485,995 480,1003" fill="#94a3b8" />
+<rect x="245" y="1003" width="470" height="88" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="1026.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21.0" font-weight="600" fill="#24344a">Release output: release-motion</text>
+<text x="480.0" y="1054.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#24344a">Check status: output process and publishers have exited</text>
+<text x="480.0" y="1082.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#24344a">Release requests cancellation; verify controller takeover on site</text>
+<polyline points="480,1091 480,1117" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,1109 485,1109 480,1117" fill="#94a3b8" />
+<rect x="245" y="1117" width="470" height="72" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5" />
+<text x="480.0" y="1146.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21.0" font-weight="600" fill="#24344a">Stop onboard session: session stop</text>
+<text x="480.0" y="1174.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17.0" font-weight="400" fill="#24344a">Run in the robot SSH terminal</text>
+<polyline points="480,1189 480,1213" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round" />
+<polygon points="475,1205 485,1205 480,1213" fill="#94a3b8" />
+<rect x="355" y="1213" width="250" height="46" rx="23" fill="#eaf1f8" stroke="#afc2d7" stroke-width="1.5" />
+<text x="480" y="1243" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20.0" font-weight="600" fill="#24344a">Ready to switch modes</text>
+<text x="480" y="1287" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#64748b">Motion output starts disabled in every mode. Full commands are provided below.</text>
+</svg>
