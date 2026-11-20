@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.8)
+project(refactor_tf_probe)
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(tf2_msgs REQUIRED)
+add_executable(tf_owner_probe probe.cpp)
+ament_target_dependencies(tf_owner_probe rclcpp tf2_msgs)

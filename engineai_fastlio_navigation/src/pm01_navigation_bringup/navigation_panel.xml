@@ -1,0 +1,6 @@
+<library path="pm01_navigation_panel">
+  <class name="pm01_navigation_bringup/Navigation 2"
+         type="pm01_navigation_bringup::NavigationPanel" base_class_type="rviz_common::Panel">
+    <description>Nav2 controls for the PM01 navigation view.</description>
+  </class>
+</library>

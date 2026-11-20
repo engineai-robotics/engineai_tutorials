@@ -1,0 +1,14 @@
+# Copy to your user config directory. Robot/developer addresses are different.
+profile: hardware
+runtime: docker
+container_tool: ~/pm01_navigation_deploy/pm01_container.py
+container_config: ~/.config/pm01_navigation/container.json
+ssh_host: <ROBOT_SSH_ALIAS>
+expected_machine_id: <ROBOT_MACHINE_ID>
+workspace: ~/pm01_navigation_ws
+session_config: ~/.config/pm01_navigation/docker/session.json
+ros_domain_id: 69
+local_addresses: [127.0.0.1, <DEVELOPER_IPV4>]
+peers: [<ROBOT_IPV4>]
+rviz_config: ''  # Empty selects bringup/config/hardware/navigation.rviz.
+request_timeout: 12.0

@@ -1,0 +1,16 @@
+.git
+build
+install
+log
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.DS_Store
+.deps/*
+!.deps/hardware/
+.deps/hardware/*
+!.deps/hardware/livox_sdk2/
+*.pcd
+*.bag
+*.db3
+*.mcap

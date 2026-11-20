@@ -1,0 +1,6 @@
+# 外部资源与 SDK 的固定来源；已内置源码的来源与修改见 THIRD_PARTY.md。
+repositories:
+  engineai_navigation:
+    type: git
+    url: https://github.com/engineai-robotics/engineai_navigation.git
+    version: 7ee29a3ede5ecd7d884a1a53b258cd5a0147bd81

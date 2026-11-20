@@ -1,0 +1,1048 @@
+<?xml version="1.0"?>
+<robot name="engineai_pm01" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:arg name="lidar_pointcloud_topic" default="/livox/lidar/pointcloud"/>
+    <xacro:arg name="lidar_frame" default="livox_frame"/>
+    <xacro:arg name="imu_topic" default="/livox/imu"/>
+    <xacro:arg name="imu_frame" default="imu_link"/>
+    <xacro:arg name="policy_imu_topic" default="/pm01/imu"/>
+    <xacro:arg name="policy_imu_frame" default="LINK_TORSO_YAW"/>
+    <xacro:arg name="lidar_update_rate" default="10.0"/>
+    <xacro:arg name="lidar_horizontal_samples" default="600"/>
+    <xacro:arg name="lidar_vertical_samples" default="64"/>
+    <xacro:arg name="lidar_visualize" default="false"/>
+    <xacro:arg name="controllers_file" default=""/>
+    <xacro:arg name="mesh_prefix" default="package://simulator/config/robot/pm01_lidar_v1/meshes"/>
+    <xacro:arg name="enable_gazebo_plugins" default="true"/>
+    <xacro:arg name="enable_sim_sensors" default="false"/>
+    <xacro:arg name="enable_lidar" default="false"/>
+    <xacro:arg name="enable_ros2_control" default="true"/>
+    <xacro:arg name="hold_until_stand_reset" default="false"/>
+
+    <!-- PD gains from SDK
+         assets/config/pm01_edu/rl_walking_example/default.yaml joint_kp / joint_kd -->
+    <xacro:macro name="gazebo_effort_joint" params="name initial">
+        <joint name="${name}">
+            <command_interface name="effort"/>
+            <state_interface name="position">
+                <param name="initial_value">${initial}</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+    </xacro:macro>
+
+    <link name="base_footprint"/>
+    <joint name="J_FIXED_BASE" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="LINK_BASE"/>
+    </joint>
+
+    <link name="LINK_BASE">
+        <inertial>
+            <origin xyz="0.01525750 -0.00001621 -0.02333111" rpy="0 0 0"/>
+            <mass value="4.08640035"/>
+            <inertia ixx="0.02219920" ixy="-0.00000019" ixz="0.00033788" iyy="0.01686616" iyz="0.00000067" izz="0.01374508"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_BASE.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.02 0 -0.042" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.0725"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="LINK_HIP_PITCH_L">
+        <inertial>
+            <origin xyz="0.01010860 0.04524604 -0.01196488" rpy="0 0 0"/>
+            <mass value="1.68628239"/>
+            <inertia ixx="0.00230276" ixy="-0.00006587" ixz="0.00002062" iyy="0.00202247" iyz="0.00003966" izz="0.00220299"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HIP_PITCH_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0.049359 -0.013226" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.048" length="0.10"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J00_HIP_PITCH_L" type="revolute">
+        <origin xyz="0.01541 0.076141 -0.061208" rpy="0 0 0"/>
+        <parent link="LINK_BASE"/>
+        <child link="LINK_HIP_PITCH_L"/>
+        <axis xyz="0 0.96593 -0.25882"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-3.141" upper="2.443" effort="164" velocity="26.3"/>
+    </joint>
+    <link name="LINK_HIP_ROLL_L">
+        <inertial>
+            <origin xyz="-0.01861361 0.00234772 -0.04601977" rpy="0 0 0"/>
+            <mass value="0.63274283"/>
+            <inertia ixx="0.00133858" ixy="0.00004643" ixz="-0.00032023" iyy="0.00144745" iyz="-0.00003062" izz="0.00125215"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HIP_ROLL_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="-0.032 0 -0.07" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J01_HIP_ROLL_L" type="revolute">
+        <origin xyz="0.048 0.049359 -0.013226" rpy="0 0 0"/>
+        <parent link="LINK_HIP_PITCH_L"/>
+        <child link="LINK_HIP_ROLL_L"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.436" upper="2.094" effort="164" velocity="26.3"/>
+    </joint>
+    <link name="LINK_HIP_YAW_L">
+        <inertial>
+            <origin xyz="-0.00361155 0.00117239 -0.09310066" rpy="0 0 0"/>
+            <mass value="1.85800304"/>
+            <inertia ixx="0.01753465" ixy="0.00008058" ixz="-0.00119237" iyy="0.01746828" iyz="0.00053257" izz="0.00379667"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HIP_YAW_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.08" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.12"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="-0.026 0.038 -0.236" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="-0.026 -0.038 -0.236" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J02_HIP_YAW_L" type="revolute">
+        <origin xyz="-0.03139 -0.0015951 -0.086016" rpy="0 0 0"/>
+        <parent link="LINK_HIP_ROLL_L"/>
+        <child link="LINK_HIP_YAW_L"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-1.57" upper="4.014" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_KNEE_PITCH_L">
+        <inertial>
+            <origin xyz="-0.00978702 0.00212191 -0.11930917" rpy="0 0 0"/>
+            <mass value="4.29474062"/>
+            <inertia ixx="0.05314257" ixy="-0.00007471" ixz="-0.00581909" iyy="0.05480624" iyz="-0.00057095" izz="0.00561043"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_KNEE_PITCH_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder radius="0.065" length="0.04"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="-0.02 0 -0.20" rpy="0 0.2 0"/>
+            <geometry>
+                <box size="0.08 0.06 0.16"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J03_KNEE_PITCH_L" type="revolute">
+        <origin xyz="-0.02602 -2.8566E-05 -0.23655" rpy="0 0 0"/>
+        <parent link="LINK_HIP_YAW_L"/>
+        <child link="LINK_KNEE_PITCH_L"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.3491" upper="2.3911" effort="164" velocity="26.3"/>
+    </joint>
+    <link name="LINK_ANKLE_PITCH_L">
+        <inertial>
+            <origin xyz="0.00126412 0 -0.00661445" rpy="0 0 0"/>
+            <mass value="0.11534469"/>
+            <inertia ixx="0.00001327" ixy="0" ixz="-0.00000119" iyy="0.00001511" iyz="0" izz="0.00001272"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ANKLE_PITCH_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.007" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.045 0.040 0.035"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J04_ANKLE_PITCH_L" type="revolute">
+        <origin xyz="-0.026756 0.00041994 -0.36305" rpy="0 0 0"/>
+        <parent link="LINK_KNEE_PITCH_L"/>
+        <child link="LINK_ANKLE_PITCH_L"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.6807" upper="0.7243" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_ANKLE_ROLL_L">
+        <inertial>
+            <origin xyz="0.01456057 0.00000119 -0.02219893" rpy="0 0 0"/>
+            <mass value="0.71786765"/>
+            <inertia ixx="0.00057796" ixy="0.00002888" ixz="0.00014638" iyy="0.00276500" iyz="0.00000205" izz="0.00292373"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ANKLE_ROLL_L.dae"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="J05_ANKLE_ROLL_L" type="revolute">
+        <origin xyz="0 0 -0.015" rpy="0 0 0"/>
+        <parent link="LINK_ANKLE_PITCH_L"/>
+        <child link="LINK_ANKLE_ROLL_L"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.2618" upper="0.2618" effort="61" velocity="35.2"/>
+    </joint>
+
+    <link name="LINK_FOOT_L">
+        <inertial>
+            <mass value="1e-3"/>
+            <inertia ixx="1e-12" ixy="0" ixz="0" iyy="1e-12" iyz="0" izz="1e-12"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.2045847 0.10711 0.02"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.122 -0.00166 0.02281" rpy="0 -0.456 0"/>
+            <geometry>
+                <box size="0.056 0.09561 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J_FIXED_FOOT_L" type="fixed">
+        <origin xyz="0.0170 0.00166 -0.04631" rpy="0 0 0"/>
+        <parent link="LINK_ANKLE_ROLL_L"/>
+        <child link="LINK_FOOT_L"/>
+    </joint>
+
+    <link name="LINK_HIP_PITCH_R">
+        <inertial>
+            <origin xyz="0.01021848 -0.04516729 -0.01221388" rpy="0 0 0"/>
+            <mass value="1.68024369"/>
+            <inertia ixx="0.00229703" ixy="0.00006759" ixz="0.00001661" iyy="0.00202245" iyz="-0.00005508" izz="0.00218388"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HIP_PITCH_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 -0.049359 -0.013226" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.048" length="0.10"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J06_HIP_PITCH_R" type="revolute">
+        <origin xyz="0.01541 -0.076141 -0.061208" rpy="0 0 0"/>
+        <parent link="LINK_BASE"/>
+        <child link="LINK_HIP_PITCH_R"/>
+        <axis xyz="0 0.96593 0.25882"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-3.141" upper="2.443" effort="164" velocity="26.3"/>
+    </joint>
+    <link name="LINK_HIP_ROLL_R">
+        <inertial>
+            <origin xyz="-0.01847775 -0.00232999 -0.04573211" rpy="0 0 0"/>
+            <mass value="0.63673573"/>
+            <inertia ixx="0.00134870" ixy="-0.00004656" ixz="-0.00032421" iyy="0.00145899" iyz="0.00003020" izz="0.00125531"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HIP_ROLL_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="-0.032 0 -0.07" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J07_HIP_ROLL_R" type="revolute">
+        <origin xyz="0.048 -0.04936 -0.013226" rpy="0 0 0"/>
+        <parent link="LINK_HIP_PITCH_R"/>
+        <child link="LINK_HIP_ROLL_R"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.094" upper="0.436" effort="164" velocity="26.3"/>
+    </joint>
+    <link name="LINK_HIP_YAW_R">
+        <inertial>
+            <origin xyz="-0.00365713 -0.00305643 -0.09626805" rpy="0 0 0"/>
+            <mass value="1.83146024"/>
+            <inertia ixx="0.01744785" ixy="-0.00007886" ixz="-0.00119524" iyy="0.01738677" iyz="-0.00052274" izz="0.00378522"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HIP_YAW_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.08" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.12"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="-0.026 0.038 -0.236" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="-0.026 -0.038 -0.236" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J08_HIP_YAW_R" type="revolute">
+        <origin xyz="-0.03139 0.0015966 -0.086016" rpy="0 0 0"/>
+        <parent link="LINK_HIP_ROLL_R"/>
+        <child link="LINK_HIP_YAW_R"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-4.014" upper="1.57" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_KNEE_PITCH_R">
+        <inertial>
+            <origin xyz="-0.00985503 -0.00214867 -0.11898555" rpy="0 0 0"/>
+            <mass value="4.29186385"/>
+            <inertia ixx="0.05277030" ixy="0.00007617" ixz="-0.00582343" iyy="0.05446054" iyz="0.00054823" izz="0.00563558"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_KNEE_PITCH_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <cylinder radius="0.065" length="0.04"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="-0.02 0 -0.20" rpy="0 0.2 0"/>
+            <geometry>
+                <box size="0.08 0.06 0.16"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J09_KNEE_PITCH_R" type="revolute">
+        <origin xyz="-0.02602 2.8566E-05 -0.23655" rpy="0 0 0"/>
+        <parent link="LINK_HIP_YAW_R"/>
+        <child link="LINK_KNEE_PITCH_R"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.3491" upper="2.3911" effort="164" velocity="26.3"/>
+    </joint>
+    <link name="LINK_ANKLE_PITCH_R">
+        <inertial>
+            <origin xyz="0.00073183 0 -0.00669428" rpy="0 0 0"/>
+            <mass value="0.11534469"/>
+            <inertia ixx="0.00001327" ixy="0" ixz="-0.00000119" iyy="0.00001511" iyz="0" izz="0.00001272"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ANKLE_PITCH_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.007" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.045 0.040 0.035"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J10_ANKLE_PITCH_R" type="revolute">
+        <origin xyz="-0.026756 -0.00041994 -0.36305" rpy="0 0 0"/>
+        <parent link="LINK_KNEE_PITCH_R"/>
+        <child link="LINK_ANKLE_PITCH_R"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.6807" upper="0.7243" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_ANKLE_ROLL_R">
+        <inertial>
+            <origin xyz="0.01470675 0.00001452 -0.02226584" rpy="0 0 0"/>
+            <mass value="0.71559163"/>
+            <inertia ixx="0.00057544" ixy="-0.00003022" ixz="0.00014346" iyy="0.00275723" iyz="-0.00000194" izz="0.00291607"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ANKLE_ROLL_R.dae"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="J11_ANKLE_ROLL_R" type="revolute">
+        <origin xyz="0 0 -0.015" rpy="0 0 0"/>
+        <parent link="LINK_ANKLE_PITCH_R"/>
+        <child link="LINK_ANKLE_ROLL_R"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.2618" upper="0.2618" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_TORSO_YAW">
+        <inertial>
+            <origin xyz="-0.01140718 -0.00348592 0.16283761" rpy="0 0 0"/>
+            <mass value="9.01442210"/>
+            <inertia ixx="0.08768307" ixy="0.00033732" ixz="0.00521370" iyy="0.06846297" iyz="0.00001900" izz="0.05731852"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_TORSO_YAW.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0 0.04" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.15 0.17 0.08"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0 0 0.16" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.18 0.2 0.2"/>
+            </geometry>
+        </collision>
+        <collision>
+        <origin xyz="0.12 0 0.2" rpy="0 0 0" />
+        <geometry>
+            <box size="0.05 0.08 0.08" />
+        </geometry>
+        </collision>        
+    </link>
+    <joint name="J12_WAIST_YAW" type="revolute">
+        <origin xyz="0.01216 0 0.0809" rpy="0 0 0"/>
+        <parent link="LINK_BASE"/>
+        <child link="LINK_TORSO_YAW"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-4.014" upper="1.57" effort="61" velocity="35.2"/>
+    </joint>
+
+    <link name="LINK_FOOT_R">
+        <inertial>
+            <mass value="1e-3"/>
+            <inertia ixx="1e-12" ixy="0" ixz="0" iyy="1e-12" iyz="0" izz="1e-12"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.2045847 0.10711 0.02"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.122 0.00166 0.02281" rpy="0 -0.456 0"/>
+            <geometry>
+                <box size="0.056 0.09561 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J_FIXED_FOOT_R" type="fixed">
+        <origin xyz="0.0170 -0.00166 -0.04631" rpy="0 0 0"/>
+        <parent link="LINK_ANKLE_ROLL_R"/>
+        <child link="LINK_FOOT_R"/>
+    </joint>
+
+    <link name="LINK_SHOULDER_PITCH_L">
+        <inertial>
+            <origin xyz="-0.00687390 0.05624677 -0.01564153" rpy="0 0 0"/>
+            <mass value="0.93215458"/>
+            <inertia ixx="0.00123482" ixy="0.00005768" ixz="-0.00002372" iyy="0.00072034" iyz="0.00018994" izz="0.00100386"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_SHOULDER_PITCH_L.dae"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="J13_SHOULDER_PITCH_L" type="revolute">
+        <origin xyz="-0.027105 0.12916 0.21549" rpy="0 0 0"/>
+        <parent link="LINK_TORSO_YAW"/>
+        <child link="LINK_SHOULDER_PITCH_L"/>
+        <axis xyz="0 0.99803 0.062791"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.9671" upper="2.7925" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_SHOULDER_ROLL_L">
+        <inertial>
+            <origin xyz="0.03741198 0.00677175 -0.02678007" rpy="0 0 0"/>
+            <mass value="0.51081280"/>
+            <inertia ixx="0.00099276" ixy="0.00000156" ixz="-0.00000333" iyy="0.00129412" iyz="0.00012129" izz="0.00093889"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_SHOULDER_ROLL_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.039 0 0" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.10"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.04 0.02 -0.068" rpy="0.08 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.016"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J14_SHOULDER_ROLL_L" type="revolute">
+        <origin xyz="-0.0371 0.066941 -0.020838" rpy="0 0 0"/>
+        <parent link="LINK_SHOULDER_PITCH_L"/>
+        <child link="LINK_SHOULDER_ROLL_L"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.6108" upper="2.3562" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_SHOULDER_YAW_L">
+        <inertial>
+            <origin xyz="-0.00084545 0.00219391 -0.04566495" rpy="0 0 0"/>
+            <mass value="0.90913792"/>
+            <inertia ixx="0.00162163" ixy="-0.00000177" ixz="-0.00000997" iyy="0.00150870" iyz="0.00001196" izz="0.00078740"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_SHOULDER_YAW_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 -0.038" rpy="0.08 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.032"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.0 0.008 -0.105" rpy="-1.49 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.075"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J15_SHOULDER_YAW_L" type="revolute">
+        <origin xyz="0.0371 0.017645 -0.070132" rpy="0 0 0"/>
+        <parent link="LINK_SHOULDER_ROLL_L"/>
+        <child link="LINK_SHOULDER_YAW_L"/>
+        <axis xyz="0 -0.062803 0.99803"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.618" upper="2.618" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_ELBOW_PITCH_L">
+        <inertial>
+            <origin xyz="0.00298237 0.00186711 -0.06518459" rpy="0 0 0"/>
+            <mass value="1.38061447"/>
+            <inertia ixx="0.00588024" ixy="-0.00002816" ixz="0.00030012" iyy="0.00593736" iyz="0.00046397" izz="0.00083553"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ELBOW_PITCH_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.007 -0.105" rpy="-1.49 0 0"/>
+            <geometry>
+                <cylinder radius="0.035" length="0.07"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J16_ELBOW_PITCH_L" type="revolute">
+        <origin xyz="0 0.0065994 -0.10487" rpy="0 0 0"/>
+        <parent link="LINK_SHOULDER_YAW_L"/>
+        <child link="LINK_ELBOW_PITCH_L"/>
+        <axis xyz="0.0027243 0.99802 0.062803"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.1948" upper="0.7374" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_ELBOW_YAW_L">
+        <inertial>
+            <origin xyz="0.02016404 0.00026082 -0.08990721" rpy="0 0 0"/>
+            <mass value="0.46651916"/>
+            <!-- Physical rotor tensor with 0.039175 kg m^2 inertia about the joint axis. -->
+            <inertia ixx="0.02216465" ixy="0.00026965" ixz="-0.00379418" iyy="0.02139355" iyz="-0.00122306" izz="0.03858966"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ELBOW_YAW_L.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.01 0.008 -0.05" rpy="0 -0.25 0"/>
+            <geometry>
+                <cylinder radius="0.03" length="0.07"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J17_ELBOW_YAW_L" type="revolute">
+        <origin xyz="0.013817 0.0097723 -0.1547" rpy="0 0 0"/>
+        <parent link="LINK_ELBOW_PITCH_L"/>
+        <child link="LINK_ELBOW_YAW_L"/>
+        <axis xyz="-0.21479 -0.061921 0.9747"/>
+        <!-- The actuator PD supplies damping for this low-inertia axis. -->
+        <dynamics damping="0.02" friction="0.02"/>
+        <limit lower="-2.618" upper="2.618" effort="61" velocity="35.2"/>
+    </joint>
+
+    <link name="LINK_ELBOW_END_L">
+        <inertial>
+            <mass value="1e-3"/>
+            <inertia ixx="1e-12" ixy="0" ixz="0" iyy="1e-12" iyz="0" izz="1e-12"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J_FIXED_ELBOW_END_L" type="fixed">
+        <origin xyz="0.03 -0.02 -0.14" rpy="0 0 0"/>
+        <parent link="LINK_ELBOW_YAW_L"/>
+        <child link="LINK_ELBOW_END_L"/>
+    </joint>
+
+    <link name="LINK_SHOULDER_PITCH_R">
+        <inertial>
+            <origin xyz="-0.00682535 -0.05628532 -0.01567159" rpy="0 0 0"/>
+            <mass value="0.92914080"/>
+            <inertia ixx="0.00123547" ixy="-0.00005830" ixz="-0.00002503" iyy="0.00071785" iyz="-0.00018920" izz="0.00100508"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_SHOULDER_PITCH_R.dae"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="J18_SHOULDER_PITCH_R" type="revolute">
+        <origin xyz="-0.027105 -0.12916 0.21549" rpy="0 0 0"/>
+        <parent link="LINK_TORSO_YAW"/>
+        <child link="LINK_SHOULDER_PITCH_R"/>
+        <axis xyz="0 0.99803 -0.062791"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.9671" upper="2.7925" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_SHOULDER_ROLL_R">
+        <inertial>
+            <origin xyz="0.03745836 -0.00675724 -0.02671114" rpy="0 0 0"/>
+            <mass value="0.50967809"/>
+            <inertia ixx="0.00099158" ixy="-0.00000134" ixz="-0.00000304" iyy="0.00129182" iyz="-0.00012106" izz="0.00093761"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_SHOULDER_ROLL_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.039 0 0" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.10"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.04 -0.02 -0.068" rpy="-0.08 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.016"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J19_SHOULDER_ROLL_R" type="revolute">
+        <origin xyz="-0.0371 -0.066941 -0.020838" rpy="0 0 0"/>
+        <parent link="LINK_SHOULDER_PITCH_R"/>
+        <child link="LINK_SHOULDER_ROLL_R"/>
+        <axis xyz="1 0 0"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.3562" upper="0.6108" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_SHOULDER_YAW_R">
+        <inertial>
+            <origin xyz="-0.00081742 -0.00217677 -0.04566906" rpy="0 0 0"/>
+            <mass value="0.90851688"/>
+            <inertia ixx="0.00162102" ixy="0.00000094" ixz="-0.00001055" iyy="0.00150799" iyz="-0.00001216" izz="0.00078668"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_SHOULDER_YAW_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 -0.038" rpy="-0.08 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.032"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.0 -0.008 -0.105" rpy="1.49 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.075"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J20_SHOULDER_YAW_R" type="revolute">
+        <origin xyz="0.0371 -0.017644 -0.070132" rpy="0 0 0"/>
+        <parent link="LINK_SHOULDER_ROLL_R"/>
+        <child link="LINK_SHOULDER_YAW_R"/>
+        <axis xyz="0 0.062791 0.99803"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.618" upper="2.618" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_ELBOW_PITCH_R">
+        <inertial>
+            <origin xyz="0.00302244 -0.00191447 -0.06521149" rpy="0 0 0"/>
+            <mass value="1.38162913"/>
+            <inertia ixx="0.00587907" ixy="0.00002756" ixz="0.00029909" iyy="0.00593696" iyz="-0.00046493" izz="0.00083539"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ELBOW_PITCH_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 -0.007 -0.105" rpy="1.49 0 0"/>
+            <geometry>
+                <cylinder radius="0.035" length="0.07"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J21_ELBOW_PITCH_R" type="revolute">
+        <origin xyz="0 -0.006598 -0.10487" rpy="0 0 0"/>
+        <parent link="LINK_SHOULDER_YAW_R"/>
+        <child link="LINK_ELBOW_PITCH_R"/>
+        <axis xyz="0.0027243 0.99802 -0.06279"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-2.1948" upper="0.7374" effort="61" velocity="35.2"/>
+    </joint>
+    <link name="LINK_ELBOW_YAW_R">
+        <inertial>
+            <origin xyz="0.02021657 -0.00026434 -0.08993096" rpy="0 0 0"/>
+            <mass value="0.46648073"/>
+            <!-- Physical rotor tensor with 0.039175 kg m^2 inertia about the joint axis. -->
+            <inertia ixx="0.02216203" ixy="-0.00026989" ixz="-0.00379680" iyy="0.02138984" iyz="0.00122283" izz="0.03858861"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_ELBOW_YAW_R.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.01 -0.008 -0.05" rpy="0 -0.25 0"/>
+            <geometry>
+                <cylinder radius="0.03" length="0.07"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J22_ELBOW_YAW_R" type="revolute">
+        <origin xyz="0.013817 -0.0097704 -0.1547" rpy="0 0 0"/>
+        <parent link="LINK_ELBOW_PITCH_R"/>
+        <child link="LINK_ELBOW_YAW_R"/>
+        <axis xyz="-0.21479 0.061909 0.9747"/>
+        <!-- The actuator PD supplies damping for this low-inertia axis. -->
+        <dynamics damping="0.02" friction="0.02"/>
+        <limit lower="-2.618" upper="2.618" effort="61" velocity="35.2"/>
+    </joint>
+
+    <link name="LINK_ELBOW_END_R">
+        <inertial>
+            <mass value="1e-3"/>
+            <inertia ixx="1e-12" ixy="0" ixz="0" iyy="1e-12" iyz="0" izz="1e-12"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J_FIXED_ELBOW_END_R" type="fixed">
+        <origin xyz="0.03 0.02 -0.14" rpy="0 0 0"/>
+        <parent link="LINK_ELBOW_YAW_R"/>
+        <child link="LINK_ELBOW_END_R"/>
+    </joint>
+
+    <link name="LINK_HEAD_YAW">
+        <inertial>
+            <origin xyz="0.00358213 0.00030109 0.08822633" rpy="0 0 0"/>
+            <mass value="0.84510036"/>
+            <inertia ixx="0.00428261" ixy="-0.00000647" ixz="0.00048256" iyy="0.00500542" iyz="0.00000033" izz="0.00313801"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(arg mesh_prefix)/LINK_HEAD_YAW.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.1"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="J23_HEAD_YAW" type="revolute">
+        <origin xyz="-0.017638 0 0.2961" rpy="0 0 0"/>
+        <parent link="LINK_TORSO_YAW"/>
+        <child link="LINK_HEAD_YAW"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.6" friction="0.8"/>
+        <limit lower="-0.6109" upper="0.6109" effort="61" velocity="35.2"/>
+    </joint>
+
+    <link name="camera_link_head"/>
+    <joint name="J_FIXED_CAMERA_HEAD" type="fixed">
+        <origin xyz="0.07426239 0.0175 0.09676911" rpy="0 0.26420093362 0"/>
+        <parent link="LINK_HEAD_YAW"/>
+        <child link="camera_link_head"/>
+    </joint>
+
+    <link name="camera_link_torso"/>
+    <joint name="J_FIXED_CAMERA_TORSO" type="fixed">
+        <origin xyz="0.07112178 0.0175 0.01109251" rpy="0 0.86946334308 0"/>
+        <parent link="LINK_TORSO_YAW"/>
+        <child link="camera_link_torso"/>
+    </joint>
+
+    <link name="LIVOX_FRAME">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <!-- Approximate Mid360 sensor envelope. -->
+                <cylinder radius="0.0001" length="0.0001"/>
+            </geometry>
+            <material name="lidar_black">
+                <color rgba="0.05 0.05 0.05 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="J_FIXED_LIVOX_FRAME" type="fixed">
+        <!-- Calibrated mount from serial_pm01_edu.urdf. -->
+        <origin
+            xyz="0.12438064 0 0.21289480"
+            rpy="0.872664626 0 1.570796327"/>
+        <parent link="LINK_TORSO_YAW"/>
+        <child link="LIVOX_FRAME"/>
+    </joint>
+    <link name="livox_frame"/>
+    <joint name="J_FIXED_LIVOX_STANDARD_FRAME" type="fixed">
+        <parent link="LIVOX_FRAME"/>
+        <child link="livox_frame"/>
+    </joint>
+    <link name="imu_link"/>
+    <joint name="J_FIXED_LIVOX_IMU" type="fixed">
+        <!-- IMU chip pose expressed in the LIVOX_FRAME coordinate system. -->
+        <origin xyz="0.011 0.02329 -0.04412" rpy="0 0 0"/>
+        <parent link="livox_frame"/>
+        <child link="imu_link"/>
+    </joint>
+
+    <gazebo reference="LINK_FOOT_L">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1e5</kp>
+        <kd>1.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+    <gazebo reference="LINK_FOOT_R">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1e5</kp>
+        <kd>1.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <xacro:if value="$(arg enable_sim_sensors)">
+    <gazebo reference="LINK_TORSO_YAW">
+        <sensor name="policy_imu" type="imu">
+            <always_on>true</always_on>
+            <update_rate>200.0</update_rate>
+            <visualize>false</visualize>
+            <plugin
+                name="policy_imu"
+                filename="libgazebo_ros_imu_sensor.so">
+                <ros>
+                    <remapping>
+                        ~/out:=$(arg policy_imu_topic)
+                    </remapping>
+                </ros>
+                <frame_name>$(arg policy_imu_frame)</frame_name>
+                <gaussian_noise>0.0</gaussian_noise>
+            </plugin>
+        </sensor>
+    </gazebo>
+    <gazebo reference="imu_link">
+        <sensor name="mid360_imu" type="imu">
+            <always_on>true</always_on>
+            <update_rate>200.0</update_rate>
+            <visualize>false</visualize>
+            <plugin name="imu" filename="libgazebo_ros_imu_sensor.so">
+                <ros>
+                    <remapping>~/out:=$(arg imu_topic)</remapping>
+                </ros>
+                <frame_name>$(arg imu_frame)</frame_name>
+                <gaussian_noise>0.0</gaussian_noise>
+            </plugin>
+        </sensor>
+    </gazebo>
+    <gazebo reference="LINK_BASE">
+        <plugin name="pm01_odom_ros" filename="libgazebo_ros_p3d.so">
+            <ros>
+                <namespace>/pm01</namespace>
+            </ros>
+            <body_name>LINK_BASE</body_name>
+            <frame_name>world</frame_name>
+            <topic_name>odom</topic_name>
+            <update_rate>100.0</update_rate>
+            <gaussian_noise>0.0</gaussian_noise>
+        </plugin>
+    </gazebo>
+    </xacro:if>
+
+    <!-- DART-compatible Mid360 envelope. CustomMsg timing is generated by
+         the PointCloud2 bridge because the ODE-only Livox plugin cannot be
+         used with the PM01 DART physics configuration. -->
+    <xacro:if value="$(arg enable_lidar)">
+    <gazebo reference="livox_frame">
+        <material>Gazebo/FlatBlack</material>
+        <sensor name="mid360" type="gpu_ray">
+            <always_on>true</always_on>
+            <visualize>$(arg lidar_visualize)</visualize>
+            <update_rate>$(arg lidar_update_rate)</update_rate>
+            <pose>0 0 0 0 0 0</pose>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>$(arg lidar_horizontal_samples)</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-3.14159265</min_angle>
+                        <max_angle>3.14159265</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>$(arg lidar_vertical_samples)</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.12601228</min_angle>
+                        <max_angle>0.9637708</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.1</min>
+                    <max>200.0</max>
+                    <resolution>0.002</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.002</stddev>
+                </noise>
+            </ray>
+            <plugin name="mid360_pointcloud" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <remapping>~/out:=$(arg lidar_pointcloud_topic)</remapping>
+                </ros>
+                <output_type>sensor_msgs/PointCloud2</output_type>
+                <frame_name>$(arg lidar_frame)</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+    </xacro:if>
+
+    <xacro:if value="$(arg enable_ros2_control)">
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        <xacro:gazebo_effort_joint name="J00_HIP_PITCH_L" initial="-0.06"/>
+        <xacro:gazebo_effort_joint name="J01_HIP_ROLL_L" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J02_HIP_YAW_L" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J03_KNEE_PITCH_L" initial="0.12"/>
+        <xacro:gazebo_effort_joint name="J04_ANKLE_PITCH_L" initial="-0.06"/>
+        <xacro:gazebo_effort_joint name="J05_ANKLE_ROLL_L" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J06_HIP_PITCH_R" initial="-0.06"/>
+        <xacro:gazebo_effort_joint name="J07_HIP_ROLL_R" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J08_HIP_YAW_R" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J09_KNEE_PITCH_R" initial="0.12"/>
+        <xacro:gazebo_effort_joint name="J10_ANKLE_PITCH_R" initial="-0.06"/>
+        <xacro:gazebo_effort_joint name="J11_ANKLE_ROLL_R" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J12_WAIST_YAW" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J13_SHOULDER_PITCH_L" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J14_SHOULDER_ROLL_L" initial="0.15"/>
+        <xacro:gazebo_effort_joint name="J15_SHOULDER_YAW_L" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J16_ELBOW_PITCH_L" initial="-0.25"/>
+        <xacro:gazebo_effort_joint name="J17_ELBOW_YAW_L" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J18_SHOULDER_PITCH_R" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J19_SHOULDER_ROLL_R" initial="-0.15"/>
+        <xacro:gazebo_effort_joint name="J20_SHOULDER_YAW_R" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J21_ELBOW_PITCH_R" initial="-0.25"/>
+        <xacro:gazebo_effort_joint name="J22_ELBOW_YAW_R" initial="0.0"/>
+        <xacro:gazebo_effort_joint name="J23_HEAD_YAW" initial="0.0"/>
+    </ros2_control>
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <parameters>$(arg controllers_file)</parameters>
+        </plugin>
+        <plugin name="pm01_stand_reset" filename="libpm01_stand_reset.so">
+            <hold_until_stand_reset>$(arg hold_until_stand_reset)</hold_until_stand_reset>
+        </plugin>
+    </gazebo>
+    </xacro:if>
+
+</robot>

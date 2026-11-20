@@ -1,0 +1,1728 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.6">
+  <world name="ground">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    
+    <model name="ground_arena">
+      <static>true</static>
+      <link name="floor">
+        <pose>0 0 -0.05 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>100 100 0.1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>100 100 0.1</size></box></geometry>
+          <material>
+            <ambient>0.16 0.24 0.34 1</ambient>
+            <diffuse>0.16 0.24 0.34 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="maze_wall_01">
+        <pose>-8.002754 -2.164485 0.750000 0 0 2.356196</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.830000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.830000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_02">
+        <pose>-0.934785 3.088702 0.750000 0 0 1.308997</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>3.020000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3.020000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_03">
+        <pose>-1.253402 -5.074368 0.750000 0 0 2.617994</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>3.340000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3.340000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_04">
+        <pose>9.322397 8.192463 0.750000 0 0 2.617994</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.270000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.270000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_05">
+        <pose>-0.665660 8.395972 0.750000 0 0 2.617994</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>3.120000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3.120000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_06">
+        <pose>-3.350257 -0.314220 0.750000 0 0 1.047198</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.220000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.220000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_07">
+        <pose>-5.725737 5.576264 0.750000 0 0 2.356196</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>3.150000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3.150000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_08">
+        <pose>4.268135 0.488885 0.750000 0 0 2.617994</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.740000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.740000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_09">
+        <pose>5.321534 9.598098 0.750000 0 0 1.047198</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.710000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.710000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_10">
+        <pose>9.978798 -10.823324 0.750000 0 0 0.261799</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.670000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.670000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_11">
+        <pose>-5.892469 -7.865181 0.750000 0 0 2.879794</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>3.320000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3.320000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_12">
+        <pose>-10.996733 6.957504 0.750000 0 0 2.094395</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.240000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.240000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_13">
+        <pose>6.777890 4.871578 0.750000 0 0 2.356196</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.380000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.380000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_14">
+        <pose>-1.729035 -10.778752 0.750000 0 0 2.094395</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.350000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.350000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_15">
+        <pose>7.132028 -2.846065 0.750000 0 0 2.356196</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>3.000000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3.000000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_16">
+        <pose>10.045567 2.013541 0.750000 0 0 2.617994</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.250000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.250000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_17">
+        <pose>-10.518603 2.233506 0.750000 0 0 1.832596</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.560000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.560000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_18">
+        <pose>-10.715638 -8.830295 0.750000 0 0 0.785397</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.560000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.560000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_19">
+        <pose>5.118076 -10.799826 0.750000 0 0 0.261799</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.890000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.890000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="maze_wall_20">
+        <pose>-7.292603 9.918312 0.750000 0 0 2.617994</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>2.890000 0.240000 1.500000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2.890000 0.240000 1.500000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_01">
+        <pose>5.672616 -6.228565 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_02">
+        <pose>-7.146008 0.953489 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_03">
+        <pose>1.813605 -11.962392 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_04">
+        <pose>11.884526 -7.014955 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_05">
+        <pose>2.946977 -3.227087 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_06">
+        <pose>-8.990001 -5.771880 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_07">
+        <pose>12.034153 -0.632277 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_08">
+        <pose>-8.432579 -12.010552 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_09">
+        <pose>-4.124157 8.861503 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_10">
+        <pose>2.205099 10.537002 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_11">
+        <pose>-11.857216 -1.648091 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_12">
+        <pose>-12.005769 -11.943075 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_13">
+        <pose>11.898950 4.629410 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_14">
+        <pose>-4.891554 2.287162 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_15">
+        <pose>2.221076 -5.106159 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_16">
+        <pose>12.006046 9.462281 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_17">
+        <pose>11.843537 6.728521 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_18">
+        <pose>-10.630413 9.815708 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_19">
+        <pose>9.723992 -0.872083 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_cylinder_20">
+        <pose>7.474501 0.492021 0.750000 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.500000</length></cylinder></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_01">
+        <pose>0.925304 -1.620997 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.390000 0.390000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.390000 0.390000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_02">
+        <pose>2.581997 6.292434 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.390000 0.390000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.390000 0.390000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_03">
+        <pose>-5.343664 -11.866216 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.500000 0.500000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.500000 0.500000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_04">
+        <pose>10.626967 11.227550 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.540000 0.540000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.540000 0.540000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_05">
+        <pose>4.186415 -4.846389 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.310000 0.310000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.310000 0.310000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_06">
+        <pose>11.076780 -2.575653 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.480000 0.480000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.480000 0.480000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_07">
+        <pose>-5.065009 -3.742804 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.480000 0.480000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.480000 0.480000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_08">
+        <pose>-2.902291 11.585993 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.500000 0.500000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.500000 0.500000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_09">
+        <pose>1.843163 -9.084276 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.380000 0.380000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.380000 0.380000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_10">
+        <pose>-9.681246 12.047691 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.350000 0.350000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.350000 0.350000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_11">
+        <pose>9.781414 5.173394 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_12">
+        <pose>3.418501 -6.898940 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.550000 0.550000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.550000 0.550000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_13">
+        <pose>-11.458504 -3.948779 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.530000 0.530000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.530000 0.530000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_14">
+        <pose>11.840921 -4.993380 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.380000 0.380000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.380000 0.380000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_15">
+        <pose>-11.889247 11.546915 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.530000 0.530000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.530000 0.530000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_16">
+        <pose>7.517379 -8.175658 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.460000 0.460000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.460000 0.460000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_17">
+        <pose>2.476901 4.069141 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.560000 0.560000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.560000 0.560000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_18">
+        <pose>8.827785 -6.254351 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.540000 0.540000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.540000 0.540000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_19">
+        <pose>0.541180 11.936301 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.440000 0.440000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.440000 0.440000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+      <link name="random_platform_20">
+        <pose>7.978510 11.633445 0.500000 0 0 0.000000</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_001">
+        <pose>-7.625527 3.799897 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_002">
+        <pose>-0.010046 -9.507359 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_003">
+        <pose>3.777483 -9.476543 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_004">
+        <pose>-9.431943 7.577299 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_005">
+        <pose>3.821540 11.378197 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_006">
+        <pose>5.723373 1.828048 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_007">
+        <pose>-0.068759 -3.876974 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_008">
+        <pose>-1.850584 5.689187 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_009">
+        <pose>-5.738403 -0.055039 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_010">
+        <pose>5.701436 -3.848855 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_011">
+        <pose>9.549966 -9.435503 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_012">
+        <pose>1.830552 1.939831 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_013">
+        <pose>-9.438943 -3.795574 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_014">
+        <pose>-3.782510 -11.337103 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_015">
+        <pose>-5.713869 -9.494181 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_016">
+        <pose>-11.403493 -0.035659 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_017">
+        <pose>-5.767181 -1.893864 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_018">
+        <pose>-1.897647 -7.544951 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_019">
+        <pose>0.007974 -7.622730 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_020">
+        <pose>-11.356662 -5.766861 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_021">
+        <pose>-5.704709 -5.703780 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_022">
+        <pose>-7.655881 -9.514897 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_023">
+        <pose>-3.722285 -5.737114 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_024">
+        <pose>-3.762570 5.746143 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_025">
+        <pose>5.774997 3.783645 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_026">
+        <pose>-5.771524 11.469407 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_027">
+        <pose>7.514417 2.150328 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_028">
+        <pose>11.457264 -8.562358 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_029">
+        <pose>11.680485 3.087389 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_030">
+        <pose>-10.230944 -2.207149 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_031">
+        <pose>9.802545 -4.147190 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_032">
+        <pose>-3.170371 -2.898163 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_033">
+        <pose>6.150855 7.278477 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_034">
+        <pose>9.225729 0.659842 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_035">
+        <pose>-11.455032 -7.280110 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_036">
+        <pose>-1.715816 -1.039468 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_037">
+        <pose>1.793533 -7.173460 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_038">
+        <pose>7.662109 6.354776 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_039">
+        <pose>6.851805 -5.081628 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_040">
+        <pose>-8.443165 5.527225 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_041">
+        <pose>-0.236321 9.925462 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_042">
+        <pose>-2.700302 3.785255 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_043">
+        <pose>-1.467842 -2.786363 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_044">
+        <pose>2.424550 8.294469 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_045">
+        <pose>-1.245048 11.569822 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_046">
+        <pose>-9.249609 -9.863560 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_047">
+        <pose>5.357969 -8.426340 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_048">
+        <pose>-7.502938 8.209989 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_049">
+        <pose>4.114645 -1.752405 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_050">
+        <pose>-7.713516 -4.514451 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_051">
+        <pose>-8.614327 0.331572 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    <link name="added_platform_052">
+        <pose>2.416557 -1.055781 0.5 0 0 0</pose>
+        <inertial><mass>1</mass></inertial>
+        <collision name="collision">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.360000 0.360000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.42 0.42 0.42 1</ambient>
+            <diffuse>0.42 0.42 0.42 1</diffuse>
+            <specular>0.15 0.15 0.15 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <scene>
+      <ambient>0.45 0.45 0.45 1</ambient>
+      <background>0.15 0.25 0.35 1</background>
+      <shadows>true</shadows>
+      <grid>false</grid>
+    </scene>
+
+    <physics name="dart_500hz" type="dart">
+      <max_step_size>0.002</max_step_size>
+      <real_time_update_rate>500</real_time_update_rate>
+    </physics>
+
+    <gui fullscreen="0">
+      <camera name="pm01_camera">
+        <pose>16 -16 8 0 0.35 2.4</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  <plugin name="evaluation_state" filename="libgazebo_ros_state.so"><ros><namespace>/gazebo</namespace></ros><update_rate>50</update_rate></plugin></world>
+</sdf>

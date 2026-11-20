@@ -1,0 +1,82 @@
+# SLAM Toolbox Humble (2.6.x), Ceres pose graph with automatic loop closure.
+# Parameters follow upstream mapper_params_online_async.yaml; the planar input
+# is gravity-aligned by the PM01 adapter, independently of torso roll/pitch.
+slam_toolbox:
+  ros__parameters:
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    ceres_loss_function: None
+    odom_frame: odom
+    map_frame: map
+    base_frame: navigation_base
+    scan_topic: /mapping_scan
+    mode: mapping
+    use_map_saver: true
+    debug_logging: false
+    throttle_scans: 1
+    # map_matching_adapter publishes the correction derived from each genuinely
+    # processed pose and exact-time odometry. This avoids Humble 2.6.10's stale
+    # last-keyframe TF stamps without inventing additional sensor observations.
+    transform_publish_period: 0.0
+    map_update_interval: 2.0
+    resolution: 0.05
+    min_laser_range: 0.6
+    max_laser_range: 12.0
+    minimum_time_interval: 0.15
+    transform_timeout: 0.3
+    tf_buffer_duration: 30.0
+    stack_size_to_use: 40000000
+    enable_interactive_mode: false
+    use_scan_matching: true
+    # Local tracking is checked before scan/cache/graph insertion. Global loop
+    # closures retain the independent upstream verification path.
+    local_match_validation: true
+    local_match_max_translation: 0.20  # ordinary tracking/near-chain residual, metres
+    local_match_recovery_max_translation: 0.40  # degraded primary only; needs 3 consistent scans
+    local_match_max_yaw: 0.035         # radians, about two degrees
+    local_match_min_response: 0.15     # quality per finite measurement; raw loop scores unchanged
+    local_match_min_support: 0.08      # fraction of finite usable beams
+    local_match_min_margin: 0.015      # competing-peak margin per finite measurement
+    local_match_ambiguity_yaw: 0.0175
+    local_match_cumulative_yaw: 0.035
+    local_match_recovery_cumulative_yaw: 0.0873  # radians; 3-frame recovery starts a new segment
+    local_match_anchor_distance: 1.0   # metres before a new correction segment
+    local_match_recovery_frames: 3     # distinct measurements before graph insertion
+    local_match_recovery_radius: 4.0   # metres around the same-time LIO prediction
+    local_match_recovery_max_references: 30
+    # Use robot poses for link/loop distance checks. A 360-degree view of the
+    # same enclosure can have an almost fixed scan centroid while we move.
+    use_scan_barycenter: false
+    # planar_scan selects real keyframes by translation OR rotation. Disable
+    # the Humble translation-only front gate to retain in-place turns.
+    minimum_travel_distance: 0.0
+    minimum_travel_heading: 0.0
+    scan_buffer_size: 10
+    scan_buffer_maximum_scan_distance: 10.0
+    link_match_minimum_response_fine: 0.1
+    link_scan_maximum_distance: 1.5
+    loop_search_maximum_distance: 3.0
+    do_loop_closing: true
+    loop_match_minimum_chain_size: 10
+    loop_match_maximum_variance_coarse: 3.0
+    loop_match_minimum_response_coarse: 0.35
+    loop_match_minimum_response_fine: 0.45
+    correlation_search_space_dimension: 0.5
+    correlation_search_space_resolution: 0.01
+    correlation_search_space_smear_deviation: 0.1
+    loop_search_space_dimension: 8.0
+    loop_search_space_resolution: 0.05
+    loop_search_space_smear_deviation: 0.03
+    distance_variance_penalty: 0.5
+    angle_variance_penalty: 1.0
+    fine_search_angle_offset: 0.00349
+    coarse_search_angle_offset: 0.349
+    coarse_angle_resolution: 0.0349
+    minimum_angle_penalty: 0.9
+    minimum_distance_penalty: 0.5
+    use_response_expansion: true
+    min_pass_through: 2
+    occupancy_threshold: 0.1

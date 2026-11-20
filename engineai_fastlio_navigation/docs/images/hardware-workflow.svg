@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1304" viewBox="0 0 960 1304" role="img" aria-labelledby="title desc">
+<title id="title">PM01 真机三种模式操作流程</title>
+<desc id="desc">准备向导完成构建和镜像加载后加载环境，站稳并选择 fresh 新图导航、mapping 手柄建图或 saved 旧图定位导航。结束时按需保存地图，释放运动输出并确认，最后停止机器人会话。</desc>
+<rect width="960" height="1304" fill="#ffffff"/>
+<text x="480" y="38" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="600" fill="#24344a">真机操作流程</text>
+<text x="480" y="68" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#64748b">先完成公共准备，再选择一条路线</text>
+<rect x="245" y="92" width="470" height="72" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="600" fill="#24344a">准备向导：构建开发端、加载机载镜像</text>
+<text x="480.0" y="149.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">bash scripts/setup_hardware.sh</text>
+<polyline points="480,164 480,188" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,180 485,180 480,188" fill="#94a3b8"/>
+<rect x="245" y="188" width="470" height="72" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="217.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="600" fill="#24344a">加载本次机器人环境</text>
+<text x="480.0" y="245.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="400" fill="#24344a">source ~/.config/pm01_navigation/active.env</text>
+<polyline points="480,260 480,283" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,275 485,275 480,283" fill="#94a3b8"/>
+<polygon points="480,283 650,328 480,373 310,328" fill="#edf3fb" stroke="#a8bdd8" stroke-width="1.5"/>
+<text x="480" y="324" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="600" fill="#24344a">站稳并保持静止</text>
+<text x="480" y="349" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#52677f">选择一种模式启动</text>
+<rect x="30" y="412" width="280" height="424" rx="18" fill="#f2f7ff" stroke="#f2f7ff" stroke-width="1.5"/>
+<rect x="340" y="412" width="280" height="424" rx="18" fill="#eff9f5" stroke="#eff9f5" stroke-width="1.5"/>
+<rect x="650" y="412" width="280" height="424" rx="18" fill="#f8f4ff" stroke="#f8f4ff" stroke-width="1.5"/>
+<polyline points="310,328 170,328 170,430" fill="none" stroke="#628bc3" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="165,422 175,422 170,430" fill="#628bc3"/>
+<polyline points="480,373 480,430" fill="none" stroke="#479a7d" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,422 485,422 480,430" fill="#479a7d"/>
+<polyline points="650,328 790,328 790,430" fill="none" stroke="#9874bd" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="785,422 795,422 790,430" fill="#9874bd"/>
+<rect x="46" y="430" width="248" height="76" rx="14" fill="#e2edfc" stroke="#8eadd6" stroke-width="1.5"/>
+<text x="170.0" y="461.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" fill="#35659e">fresh · 新图导航</text>
+<text x="170.0" y="489.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="400" fill="#35659e">session start --mode fresh</text>
+<rect x="356" y="430" width="248" height="76" rx="14" fill="#ddf2e9" stroke="#88bdaa" stroke-width="1.5"/>
+<text x="480.0" y="461.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" fill="#237c60">mapping · 仅建图</text>
+<text x="480.0" y="489.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="400" fill="#237c60">session start --mode mapping</text>
+<rect x="666" y="430" width="248" height="76" rx="14" fill="#eee4fa" stroke="#b69bcf" stroke-width="1.5"/>
+<text x="790.0" y="461.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" fill="#775298">saved · 旧图导航</text>
+<text x="790.0" y="489.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="400" fill="#775298">--mode saved --map …</text>
+<polyline points="170,506 170,532" fill="none" stroke="#8eadd6" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="165,524 175,524 170,532" fill="#8eadd6"/>
+<polyline points="480,506 480,532" fill="none" stroke="#88bdaa" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,524 485,524 480,532" fill="#88bdaa"/>
+<polyline points="790,506 790,532" fill="none" stroke="#b69bcf" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="785,524 795,524 790,532" fill="#b69bcf"/>
+<rect x="46" y="532" width="248" height="100" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="170.0" y="561.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="600" fill="#24344a">打开 RViz</text>
+<text x="170.0" y="589.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#24344a">确认新地图与机器人位姿</text>
+<text x="170.0" y="617.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">以本次启动位置为原点</text>
+<rect x="356" y="532" width="248" height="100" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="561.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="600" fill="#24344a">打开 RViz</text>
+<text x="480.0" y="589.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#24344a">确认地图持续更新</text>
+<text x="480.0" y="617.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">使用现有实体手柄</text>
+<rect x="666" y="532" width="248" height="100" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="790.0" y="561.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" fill="#24344a">打开 RViz 查看旧图</text>
+<text x="790.0" y="589.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#24344a">2D Pose Estimate</text>
+<text x="790.0" y="617.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#24344a">指定当前位置与朝向</text>
+<polyline points="170,632 170,658" fill="none" stroke="#8eadd6" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="165,650 175,650 170,658" fill="#8eadd6"/>
+<polyline points="480,632 480,658" fill="none" stroke="#88bdaa" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,650 485,650 480,658" fill="#88bdaa"/>
+<polyline points="790,632 790,658" fill="none" stroke="#b69bcf" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="785,650 795,650 790,658" fill="#b69bcf"/>
+<rect x="46" y="658" width="248" height="150" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="170.0" y="698.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="600" fill="#24344a">接通输出 enable-motion</text>
+<text x="170.0" y="726.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#24344a">Nav2 Goal / goal 发目标</text>
+<text x="170.0" y="754.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">到点后可继续下一个目标</text>
+<text x="170.0" y="782.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">中断当前任务用 cancel</text>
+<rect x="356" y="658" width="248" height="150" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="698.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" fill="#24344a">手柄控制机器人采集环境</text>
+<text x="480.0" y="726.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">观察地图覆盖所需区域</text>
+<text x="480.0" y="754.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">不执行自动导航步骤</text>
+<text x="480.0" y="782.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">无需接通本项目运动输出</text>
+<rect x="666" y="658" width="248" height="150" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="790.0" y="698.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" fill="#24344a">确认位置和朝向</text>
+<text x="790.0" y="726.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">接通输出 enable-motion</text>
+<text x="790.0" y="754.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" fill="#24344a">Nav2 Goal / goal 发目标</text>
+<text x="790.0" y="782.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">中断当前任务用 cancel</text>
+<polyline points="170,808 170,862 480,862 480,893" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,885 485,885 480,893" fill="#94a3b8"/>
+<polyline points="480,808 480,893" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,885 485,885 480,893" fill="#94a3b8"/>
+<polyline points="790,808 790,862 480,862 480,893" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,885 485,885 480,893" fill="#94a3b8"/>
+<rect x="245" y="893" width="470" height="84" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="928.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" fill="#24344a">按需保存地图：save-map</text>
+<text x="480.0" y="956.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">停止后台前完成；记下机器人上的 map.yaml 路径</text>
+<polyline points="480,977 480,1003" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,995 485,995 480,1003" fill="#94a3b8"/>
+<rect x="245" y="1003" width="470" height="88" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="1026.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" fill="#24344a">释放运动输出：release-motion</text>
+<text x="480.0" y="1054.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">再用 status 确认输出进程与发布者已退出</text>
+<text x="480.0" y="1082.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="400" fill="#24344a">释放会请求取消目标；手柄接管以现场确认为准</text>
+<polyline points="480,1091 480,1117" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,1109 485,1109 480,1117" fill="#94a3b8"/>
+<rect x="245" y="1117" width="470" height="72" rx="14" fill="#f5f8fc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="1146.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" fill="#24344a">停止机载会话：session stop</text>
+<text x="480.0" y="1174.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" fill="#24344a">在机器人 SSH 终端执行</text>
+<polyline points="480,1189 480,1213" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="475,1205 485,1205 480,1213" fill="#94a3b8"/>
+<rect x="355" y="1213" width="250" height="46" rx="23" fill="#eaf1f8" stroke="#afc2d7" stroke-width="1.5"/>
+<text x="480" y="1243" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="600" fill="#24344a">结束 / 可切换模式</text>
+<text x="480" y="1287" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="400" fill="#64748b">所有模式启动时运动输出默认关闭 · 完整命令见下方对应步骤</text>
+</svg>

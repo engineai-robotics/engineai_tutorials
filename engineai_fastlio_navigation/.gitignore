@@ -1,0 +1,31 @@
+# colcon 产物，在目标机器上重新编译
+/build/
+/install/
+/log/
+
+# 本地缓存和终端记录
+.pytest_cache/
+Terminal_logs/
+__pycache__/
+*.pyc
+
+# 本地生成的点云和运行日志
+*.pcd
+src/FAST_LIO_ROS2/PCD/
+src/FAST_LIO_ROS2/Log/
+
+# Developer-local dependencies and generated output
+/.deps/
+.DS_Store
+
+# Source releases are generated outside the repository.
+/release/
+
+# Recorded sensor streams and editor-specific state
+*.bag
+*.db3
+*.mcap
+.vscode/
+.idea/
+
+/test-results/

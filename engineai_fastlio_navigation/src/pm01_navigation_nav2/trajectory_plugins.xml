@@ -1,0 +1,5 @@
+<library path="pm01_walking_trajectory_generator">
+  <class type="pm01_fastlio_nav::WalkingTrajectoryGenerator" base_class_type="dwb_core::TrajectoryGenerator">
+    <description>Predict residual body rotation while following a path.</description>
+  </class>
+</library>

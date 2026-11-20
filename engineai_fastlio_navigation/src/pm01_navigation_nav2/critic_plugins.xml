@@ -1,0 +1,7 @@
+<library path="pm01_dwb_critics">
+  <class name="pm01_fastlio_nav::WalkingCommandCritic"
+         type="pm01_fastlio_nav::WalkingCommandCritic"
+         base_class_type="dwb_core::TrajectoryCritic">
+    <description>Require executable nonzero linear and angular walking components independently.</description>
+  </class>
+</library>

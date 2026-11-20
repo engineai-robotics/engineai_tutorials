@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="660" viewBox="0 0 1000 660" role="img" aria-labelledby="architecture-title architecture-description">
+<title id="architecture-title">PM01 导航架构</title>
+<desc id="architecture-description">从 Livox 雷达或 Gazebo 采集点云与 IMU，经过 FAST-LIO、里程计与 TF 适配和实时地图处理，导航目标由 RViz、命令行或 Python 输入，机器人位姿、地图及目标交给 Nav2。导航速度通过运动输出适配交给 PM01 运控或仿真步行策略，机器人运动至目标。图按输入、定位建图、导航、执行四个区域排列。</desc>
+<defs>
+<marker id="data-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#718399"/></marker>
+<marker id="command-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3568ad"/></marker>
+<marker id="result-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4f8b69"/></marker>
+</defs>
+<g font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, sans-serif">
+<rect width="1000" height="674" fill="#ffffff"/>
+<rect x="24" y="24" width="420" height="276" rx="12" fill="#f7f9fc" stroke="#d9e1eb" stroke-width="1.4"/>
+<circle cx="52" cy="52" r="12" fill="#385b80"/>
+<text x="52" y="56" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">1</text>
+<text x="75" y="58" text-anchor="start" font-size="18" font-weight="600" fill="#22354c">数据与目标输入</text>
+<rect x="532" y="24" width="444" height="276" rx="12" fill="#f7f9fc" stroke="#d9e1eb" stroke-width="1.4"/>
+<circle cx="560" cy="52" r="12" fill="#385b80"/>
+<text x="560" y="56" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">2</text>
+<text x="583" y="58" text-anchor="start" font-size="18" font-weight="600" fill="#22354c">定位与环境建模</text>
+<rect x="532" y="350" width="444" height="286" rx="12" fill="#f7f9fc" stroke="#d9e1eb" stroke-width="1.4"/>
+<circle cx="560" cy="378" r="12" fill="#385b80"/>
+<text x="560" y="382" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">3</text>
+<text x="583" y="384" text-anchor="start" font-size="18" font-weight="600" fill="#22354c">导航规划与控制</text>
+<rect x="24" y="350" width="420" height="286" rx="12" fill="#f7f9fc" stroke="#d9e1eb" stroke-width="1.4"/>
+<circle cx="52" cy="378" r="12" fill="#385b80"/>
+<text x="52" y="382" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">4</text>
+<text x="75" y="384" text-anchor="start" font-size="18" font-weight="600" fill="#22354c">运动执行与结果</text>
+<path data-from="S" data-to="L" d="M 420 125 H 560" fill="none" stroke="#718399" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+<path data-from="L" data-to="M" d="M 744 125 H 872 V 184" fill="none" stroke="#718399" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+<path data-from="L" data-to="O" d="M 652 156 V 202" fill="none" stroke="#718399" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+<path data-from="O" data-to="M" d="M 744 234 H 792" fill="none" stroke="#718399" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+<path data-from="O" data-to="N" d="M 652 266 V 320 H 760 V 418" fill="none" stroke="#718399" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+<path data-from="M" data-to="N" d="M 872 266 V 418" fill="none" stroke="#718399" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+<path data-from="A" data-to="N" d="M 420 236 H 492 V 450 H 560" fill="none" stroke="#3568ad" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#command-arrow)"/>
+<path data-from="N" data-to="V" d="M 560 505 H 430" fill="none" stroke="#3568ad" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#command-arrow)"/>
+<path data-from="V" data-to="R" d="M 280 505 H 252" fill="none" stroke="#3568ad" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#command-arrow)"/>
+<path data-from="R" data-to="G" d="M 150 548 V 566" fill="none" stroke="#4f8b69" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#result-arrow)"/>
+<rect x="463.0" y="103" width="88" height="21" rx="4" fill="#ffffff"/>
+<text x="507" y="118" text-anchor="middle" font-size="13" font-weight="400" fill="#4b6078">点云 + IMU</text>
+<rect x="754.0" y="103" width="108" height="21" rx="4" fill="#ffffff"/>
+<text x="808" y="118" text-anchor="middle" font-size="13" font-weight="400" fill="#4b6078">去畸变点云</text>
+<rect x="662.0" y="170" width="36" height="21" rx="4" fill="#ffffff"/>
+<text x="680" y="185" text-anchor="middle" font-size="13" font-weight="400" fill="#4b6078">位姿</text>
+<rect x="750.0" y="208" width="36" height="21" rx="4" fill="#ffffff"/>
+<text x="768" y="223" text-anchor="middle" font-size="13" font-weight="400" fill="#4b6078">对齐</text>
+<rect x="661.5" y="310" width="87" height="21" rx="4" fill="#ffffff"/>
+<text x="705" y="325" text-anchor="middle" font-size="13" font-weight="400" fill="#4b6078">局部里程计</text>
+<rect x="817.5" y="310" width="109" height="21" rx="4" fill="#ffffff"/>
+<text x="872" y="325" text-anchor="middle" font-size="13" font-weight="400" fill="#4b6078">地图与全局位姿</text>
+<rect x="459.0" y="318" width="66" height="21" rx="4" fill="#ffffff"/>
+<text x="492" y="333" text-anchor="middle" font-size="13" font-weight="400" fill="#3568ad">目标位姿</text>
+<rect x="462.0" y="483" width="66" height="21" rx="4" fill="#ffffff"/>
+<text x="495" y="498" text-anchor="middle" font-size="13" font-weight="400" fill="#3568ad">导航速度</text>
+<g id="node-S">
+<rect x="48" y="84" width="372" height="82" rx="9" fill="#eef5ff" stroke="#9ebbd8" stroke-width="1.4"/>
+<text x="234.0" y="107" text-anchor="middle" font-size="18" font-weight="600" fill="#22354c">传感器数据</text>
+<text x="234.0" y="133" text-anchor="middle" font-size="16" font-weight="400" fill="#22354c">真机由 Livox 雷达输入</text>
+<text x="234.0" y="155" text-anchor="middle" font-size="16" font-weight="400" fill="#22354c">仿真由 Gazebo 输入</text>
+</g>
+<g id="node-A">
+<rect x="48" y="198" width="372" height="76" rx="9" fill="#eef5ff" stroke="#9ebbd8" stroke-width="1.4"/>
+<text x="234.0" y="228" text-anchor="middle" font-size="18" font-weight="600" fill="#22354c">导航目标点</text>
+<text x="234.0" y="254" text-anchor="middle" font-size="16" font-weight="400" fill="#22354c">由 RViz／命令行／Python 输入</text>
+</g>
+<g id="node-L">
+<rect x="560" y="94" width="184" height="62" rx="9" fill="#ffffff" stroke="#b3c1d2" stroke-width="1.4"/>
+<text x="652.0" y="119" text-anchor="middle" font-size="16" font-weight="600" fill="#22354c">FAST-LIO 局部里程计</text>
+<text x="652.0" y="142" text-anchor="middle" font-size="15" font-weight="400" fill="#22354c">连续位置与姿态估计</text>
+</g>
+<g id="node-O">
+<rect x="560" y="202" width="184" height="64" rx="9" fill="#ffffff" stroke="#b3c1d2" stroke-width="1.4"/>
+<text x="652.0" y="228" text-anchor="middle" font-size="16" font-weight="600" fill="#22354c">里程计与 TF 适配</text>
+<text x="652.0" y="251" text-anchor="middle" font-size="15" font-weight="400" fill="#22354c">统一坐标</text>
+</g>
+<g id="node-M">
+<rect x="792" y="184" width="160" height="82" rx="9" fill="#ffffff" stroke="#b3c1d2" stroke-width="1.4"/>
+<text x="872.0" y="217" text-anchor="middle" font-size="16" font-weight="600" fill="#22354c">地图构建与匹配</text>
+<text x="872.0" y="243" text-anchor="middle" font-size="12" font-weight="400" fill="#22354c">SLAM / AMCL + 实时层</text>
+</g>
+<g id="node-N">
+<rect x="560" y="418" width="392" height="130" rx="9" fill="#eef3ff" stroke="#9eb2d9" stroke-width="1.4"/>
+<text x="756.0" y="452" text-anchor="middle" font-size="21" font-weight="600" fill="#22354c">Nav2 规划与控制</text>
+<text x="756.0" y="483" text-anchor="middle" font-size="18" font-weight="400" fill="#22354c">路径规划 · 实时避障</text>
+<text x="756.0" y="517" text-anchor="middle" font-size="15" font-weight="400" fill="#22354c">输出平移与转向速度</text>
+</g>
+<g id="node-V">
+<rect x="280" y="462" width="150" height="86" rx="9" fill="#f1f8f4" stroke="#98bca7" stroke-width="1.4"/>
+<text x="355.0" y="490" text-anchor="middle" font-size="16" font-weight="600" fill="#22354c">运动输出适配</text>
+<text x="355.0" y="516" text-anchor="middle" font-size="15" font-weight="400" fill="#22354c">接通后</text>
+<text x="355.0" y="537" text-anchor="middle" font-size="15" font-weight="400" fill="#22354c">转发导航速度</text>
+</g>
+<g id="node-R">
+<rect x="48" y="462" width="204" height="86" rx="9" fill="#f1f8f4" stroke="#98bca7" stroke-width="1.4"/>
+<text x="150.0" y="488" text-anchor="middle" font-size="17" font-weight="600" fill="#22354c">PM01 运控</text>
+<text x="150.0" y="511" text-anchor="middle" font-size="16" font-weight="400" fill="#22354c">/ 仿真步行策略</text>
+<text x="150.0" y="535" text-anchor="middle" font-size="15" font-weight="400" fill="#22354c">步态与身体平衡</text>
+</g>
+<g id="node-G">
+<rect x="48" y="566" width="382" height="58" rx="9" fill="#e7f3eb" stroke="#7ea68e" stroke-width="1.4"/>
+<text x="239.0" y="601" text-anchor="middle" font-size="18" font-weight="600" fill="#22354c">机器人运动至目标</text>
+</g>
+</g>
+</svg>

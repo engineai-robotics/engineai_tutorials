@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pm01_navigation_perception</name><version>1.0.0</version>
+  <description>Livox 消息、LIO 去畸变点云和水平扫描转换。</description>
+  <maintainer email="info@engineai.com.cn">PM01 maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>ament_cmake_python</depend>
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+  <exec_depend>pm01_navigation_core</exec_depend>
+  <depend>geometry_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>livox_ros_driver2</depend>
+  <depend>python3-numpy</depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
